@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="m-a-1">
+    <h3 class="bg-primary p-1">
+      Lista dla użytkownika: {{getName()}}a
+    </h3>
+    <div class="mt-1 mb-1">
+      <input type="text" class="form-control" #todoAction>
+      <button class="btn btn-primary mt-1" (click)="addTodo(todoAction.value)">
+        Dodaj
+      </button>
+    </div>
+    <table class="table table-striped table-bordered">
+      <thead>
+        <tr>
+          <th></th>
+          <th>
+            Zadanie
+          </th>
+          <th colspan="2">
+            Wykonanie
+          </th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let todo of getTodoItems(); let i = index">
+          <td>
+            {{ i + 1 }}
+          </td>
+          <td>
+            {{todo.action}}
+          </td>
+          <td>
+            <input type="checkbox" [(ngModel)]="todo.done">
+          </td>
+          <td>
+            {{todo.done ? 'Tak' : 'Nie'}}
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
