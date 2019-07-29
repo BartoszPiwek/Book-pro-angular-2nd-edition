@@ -7,15 +7,13 @@
   <div class="row">
     <div class="col-3 bg-info py-4">
       <div class="btn btn-primary btn-block" (click)="changeSelectedCategory()">Wszystkie</div>
-      <div *ngFor="let category of categories" class="btn btn-primary btn-block" [ngClass]="{'bg-secondary': selectedCategory === category}"
-        (click)="changeSelectedCategory(category)">
+      <div *ngFor="let category of categories" class="btn btn-primary btn-block"
+        [ngClass]="{'bg-secondary': selectedCategory === category}" (click)="changeSelectedCategory(category)">
         {{category}}
       </div>
-      <div class="p-4">{{categories.length}} kategorie</div>
     </div>
     <div class="col-9 bg-success py-4">
       <div class="p-4">
-        <p class="py-2">{{products.length}} produktów</p>
         <div *ngFor="let product of products" class="card card-outline-primary mb-4">
           <h4 class="card-header">
             {{product.name}}
@@ -31,17 +29,18 @@
       <div class="row">
         <div class="col-6">
           <select [value]="paginationSize" (change)="changePaginationSize($event.target.value)">
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+            <option value="2">2 na stronie</option>
+            <option value="3">3 na stronie</option>
+            <option value="4">4 na stronie</option>
+            <option value="5">5 na stronie</option>
           </select>
         </div>
         <div class="col-6">
           <div class="btn-group">
-            <button *ngFor="let page of pageNumbers" class="btn btn-info" [ngClass]="{'bg-secondary': page === selectedPage}" (click)="changeSelectedPage(page)">
-              {{page}}
-            </button> 
+              <button *appPagination="let page of pageCount" class="btn btn-info" [ngClass]="{'bg-secondary': page === selectedPage}"
+                (click)="changeSelectedPage(page)">
+                {{page}}
+              </button>
           </div>
         </div>
       </div>
