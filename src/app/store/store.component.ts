@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { ProductRepository } from '../model/product.repository';
 import { Product } from '../model/product.model';
+import { Cart } from '../model/cart.model';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-store',
@@ -9,10 +11,10 @@ import { Product } from '../model/product.model';
 })
 export class StoreComponent {
   public selectedCategory: string;
-  public selectedPage: number = 1;
-  public paginationSize: number = 4;
+  public selectedPage = 1;
+  public paginationSize = 4;
 
-  constructor(private repository: ProductRepository) { }
+  constructor(private repository: ProductRepository, private cart: Cart, private router: Router) { }
 
   changeSelectedCategory(newSelectedCategory?: string) {
     this.selectedPage = 1;
@@ -31,6 +33,11 @@ export class StoreComponent {
   // get pageNumbers(): number[] {
   //   return Array(Math.ceil( this.repository.getProducts(this.selectedCategory).length / this.paginationSize )).fill(0).map((x,i) => i + 1);
   // }
+
+  addProductToCart(product: Product) {
+    this.cart.addLine(product);
+    this.router.navigateByUrl('/cart');
+  }
 
   get pageCount(): number {
     return Math.ceil(this.repository.getProducts(this.selectedCategory).length / this.paginationSize);

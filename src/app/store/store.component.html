@@ -3,6 +3,7 @@
     <a href="" class="navbar-brand">
       Sklep sportowy
     </a>
+    <app-cart-summary></app-cart-summary>
   </div>
   <div class="row">
     <div class="col-3 bg-info py-4">
@@ -23,6 +24,8 @@
           </h4>
           <div class="card-text p-1">
             {{product.description}}
+            <button class="btn btn-success btn-sm pull-xs-right" (click)="addProductToCart(product)">Dodaj do
+              koszyka</button>
           </div>
         </div>
       </div>
@@ -37,10 +40,10 @@
         </div>
         <div class="col-6">
           <div class="btn-group">
-              <button *appPagination="let page of pageCount" class="btn btn-info" [ngClass]="{'bg-secondary': page === selectedPage}"
-                (click)="changeSelectedPage(page)">
-                {{page}}
-              </button>
+            <button *appPagination="let page of pageCount" class="btn btn-info"
+              [ngClass]="{'bg-secondary': page === selectedPage}" (click)="changeSelectedPage(page)">
+              {{page}}
+            </button>
           </div>
         </div>
       </div>

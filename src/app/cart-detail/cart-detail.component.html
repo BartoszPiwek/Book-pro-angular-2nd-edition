@@ -1,0 +1,61 @@
+<div class="container">
+  <div class="navbar navbar-inverse bg-inverse">
+    <a href="#" class="navbar-brand">
+      Sklep sportowy
+    </a>
+  </div>
+
+  <div class="my-4">
+    <h2 class="center">Koszyk</h2>
+    <table class="table table-rodered table-striped p-4">
+      <thead>
+        <tr>
+          <td>Ilość</td>
+          <td>Produkt</td>
+          <td class="text-right">Cena</td>
+          <td class="text-right">Wartość</td>
+          <td></td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngIf="cart.lines.length == 0">
+          <td colspan="5" class="center">
+            Koszyk jest pusty
+          </td>
+        </tr>
+        <tr *ngFor="let line of cart.lines">
+          <td>
+            <input type="number" class="form-control-sm" [value]="line.quantity"
+              (change)="cart.updateQuantity(line.product, $event.target.value)">
+          </td>
+          <td>
+            {{line.product.name}}
+          </td>
+          <td class="text-right">
+            {{line.product.price | currency:"zł":"symbol":"2.2-2"}}
+          </td>
+          <td class="text-right">
+            {{line.lineTotal | currency:"zł":"symbol":"2.2-2"}}
+          </td>
+          <td class="center">
+            <button class="btn btn-sm btn-danger" (click)="cart.removeLine(line.product.id)">
+              Usuń
+            </button>
+          </td>
+        </tr>
+      </tbody>
+      <tfoot>
+        <tr>
+          <td colspan="3" class="text-right">Razem</td>
+          <td class="text-right">
+            {{cart.cartPrice | currency:"zł":"symbol":"2.2-2"}}
+          </td>
+        </tr>
+      </tfoot>
+    </table>
+  </div>
+  <div class="center">
+    <button class="btn btn-primary" [routerLink]="['/store']">Kontynuuj zakupy</button>
+    <button class="btn btn-secondary" [routerLink]="['/checkout']" [disabled]="cart.lines.length === 0">Do kasy</button>
+  </div>
+</div>

@@ -1,52 +1,44 @@
-module.exports = () => {
+module.exports = function () {
   return {
     products: [
-      [{
-        "id": 1,
-        "model": "GTO",
-        "year": 2006,
-        "make": "Pontiac"
-      }, {
-        "id": 2,
-        "model": "Continental GTC",
-        "year": 2008,
-        "make": "Bentley"
-      }, {
-        "id": 3,
-        "model": "Maxima",
-        "year": 2009,
-        "make": "Nissan"
-      }, {
-        "id": 4,
-        "model": "Skyhawk",
-        "year": 1988,
-        "make": "Buick"
-      }, {
-        "id": 5,
-        "model": "Shadow",
-        "year": 1994,
-        "make": "Dodge"
-      }, {
-        "id": 6,
-        "model": "XC90",
-        "year": 2013,
-        "make": "Volvo"
-      }, {
-        "id": 7,
-        "model": "RX-7",
-        "year": 1992,
-        "make": "Mazda"
-      }, {
-        "id": 8,
-        "model": "Touareg 2",
-        "year": 2009,
-        "make": "Volkswagen"
-      }, {
-        "id": 9,
-        "model": "Passat",
-        "year": 1996,
-        "make": "Volkswagen"
-      }]
+      {
+        id: 1, name: "Kajak", category: "Sporty wodne",
+        description: "Łódka przeznaczona dla jednej osoby.", price: 275
+      },
+      {
+        id: 2, name: "Kamizelka ratunkowa", category: "Sporty wodne",
+        description: "Chroni i dodaje uroku.", price: 48.95
+      },
+      {
+        id: 3, name: "Piłka", category: "Piłka nożna",
+        description: "Zatwierdzone przez FIFA rozmiar i waga.", price: 19.50
+      },
+      {
+        id: 4, name: "Flagi narożne", category: "Piłka nożna",
+        description: "Nadadzą twojemu boisku profesjonalny wygląd.",
+        price: 34.95
+      },
+      {
+        id: 5, name: "Stadion", category: "Piłka nożna",
+        description: "Składany stadion na 35 000 osób.", price: 79500
+      },
+      {
+        id: 6, name: "Czapka", category: "Szachy",
+        description: "Zwiększa efektywność mózgu o 75%.", price: 16
+      },
+      {
+        id: 7, name: "Niestabilne krzesło", category: "Szachy",
+        description: "Zmniejsza szanse przeciwnika.",
+        price: 29.95
+      },
+      {
+        id: 8, name: "Ludzka szachownica", category: "Szachy",
+        description: "Przyjemna gra dla całej rodziny.", price: 75
+      },
+      {
+        id: 9, name: "Błyszczący król", category: "Szachy",
+        description: "Pokryty złotem i wysadzany diamentami król.", price: 1200
+      }
     ],
     orders: []
   };

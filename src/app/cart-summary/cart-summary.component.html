@@ -1,0 +1,15 @@
+<div class="pull-xs-right">
+  <small>
+    Koszyk:
+    <span *ngIf="cart.itemCount > 0">
+      {{cart.itemCount}} produkt(ów)
+      {{cart.cartPrice | currency:"zł":"symbol":"2.2-2"}}
+    </span>
+    <span *ngIf="cart.itemCount == 0">
+      (pusty)
+    </span>
+  </small>
+  <button class="btn btn-sm bg-inverse" [disabled]="cart.itemCount == 0" routerLink="/cart">
+    Koszyk
+  </button>
+</div>
