@@ -1,11 +1,13 @@
 const jwt = require("jsonwebtoken");
 
-const APP_SECRET = "appsekret";
+const APP_SECRET = "myappsecret";
 const USERNAME = "admin";
-const PASSWORD = "sekret";
+const PASSWORD = "secret";
 
 module.exports = function (req, res, next) {
-  if (req.url == "/login" && req.method == "POST") {
+
+  if ((req.url == "/api/login" || req.url == "/login")
+    && req.method == "POST") {
     if (req.body != null && req.body.name == USERNAME
       && req.body.password == PASSWORD) {
       let token = jwt.sign({ data: USERNAME, expiresIn: "1h" }, APP_SECRET);
@@ -15,8 +17,12 @@ module.exports = function (req, res, next) {
     }
     res.end();
     return;
-  } else if ((req.url.startsWith("/products") && req.method != "GET")
-    || (req.url.startsWith("/orders") && req.method != "POST")) {
+  } else if ((((req.url.startsWith("/api/products")
+    || req.url.startsWith("/products"))
+    || (req.url.startsWith("/api/categories")
+      || req.url.startsWith("/categories"))) && req.method != "GET")
+    || ((req.url.startsWith("/api/orders")
+      || req.url.startsWith("/orders")) && req.method != "POST")) {
     let token = req.headers["authorization"];
     if (token != null && token.startsWith("Bearer<")) {
       token = token.substring(7, token.length - 1);

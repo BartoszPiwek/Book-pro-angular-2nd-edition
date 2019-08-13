@@ -8,17 +8,19 @@ import { CheckoutComponent } from './checkout/checkout.component';
 import { RouterModule, Routes } from '@angular/router';
 import { StoreComponent } from './store/store.component';
 import { StoreFirstGuard } from './storeFirst.guard';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
   { path: 'store', component: StoreComponent, canActivate: [StoreFirstGuard] },
   { path: 'cart', component: CartDetailComponent, canActivate: [StoreFirstGuard] },
   { path: 'checkout', component: CheckoutComponent, canActivate: [StoreFirstGuard] },
+  { path: 'admin', loadChildren: './admin/admin.module#AdminModule', canActivate: [StoreFirstGuard] },
   { path: '**', redirectTo: '/store' }
 ];
 
 @NgModule({
   declarations: [AppComponent],
-  imports: [BrowserModule, StoreModule, RouterModule.forRoot(routes)],
+  imports: [BrowserModule, StoreModule, FormsModule, RouterModule.forRoot(routes)],
   bootstrap: [AppComponent],
   providers: [StoreFirstGuard]
 })

@@ -12,6 +12,9 @@
         [ngClass]="{'bg-secondary': selectedCategory === category}" (click)="changeSelectedCategory(category)">
         {{category}}
       </div>
+      <button class="btn btn-block btn-danger mt-3" routerLink="/admin">
+        Administracja
+      </button>
     </div>
     <div class="col-9 bg-success py-4">
       <div class="p-4">
