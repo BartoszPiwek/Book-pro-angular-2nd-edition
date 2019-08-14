@@ -8,8 +8,10 @@ import { AuthGuard } from './auth/auth.guard';
 
 const routing: Route[] = [
   { path: 'auth', component: AuthComponent },
-  { path: 'main', component: AdminComponent, canActivate: [AuthGuard] },
-  { path: '**', redirectTo: 'auth' },
+  {
+    path: 'main', component: AdminComponent, canActivate: [AuthGuard],
+  },
+  { path: '**', redirectTo: 'auth' }
 ];
 
 @NgModule({
